@@ -10,4 +10,12 @@ var app = builder.Build();
 app.MapGet("/advetisments", async (AdvertismentDb db) => 
     await db.Advertisments.ToListAsync());
 
+app.MapPost("/advetisments", async (Advertisment advertisments, AdvertismentDb db) =>
+{
+    db.Advertisments.Add(advertisments);
+    await db.SaveChangesAsync();
+
+    return Results.Created($"/advertisments/{advertisments.SellerID}", advertisments);
+});
+
 app.Run();
