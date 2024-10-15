@@ -19,12 +19,15 @@ return await db.Advertisments
 });
 
 app.MapGet("/advertisment/{id}", async (int id, AdvertismentDb db) =>
-    await db.Advertisments.FindAsync(id)
-        is Advertisment advertisments
-            ? Results.Ok(advertisments)
-            : Results.NotFound());
+{
+    var advertisment = await db.Advertisments
+    .Include(a => a.Seller)
+    .Include(a => a.Category)
+    .FirstOrDefaultAsync(a => a.Id == Id);
+    return advertisment is not null ? Results.Ok(advertisment) : Results.NotFound();
+});
 
-app.MapPost("/advertisments", async (Advertisment ad, AdvertismentDb db) =>
+app.MapPost("/advertisment", async (Advertisment ad, AdvertismentDb db) =>
 {
     db.Advertisments.Add(ad);
     await db.SaveChangesAsync();
