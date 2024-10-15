@@ -1,16 +1,35 @@
 ﻿@Lab2_HostAddress = http://localhost:5059
 
-GET {{Lab2_HostAddress}}/advetisments
-
-###
-
-POST {{Lab2_HostAddress}}/advetisments
+POST {{Lab2_HostAddress}}/advertisments
+Content-Type: application/json
 
 {
-  "sellerid": 17,
   "description": "bananas",
   "category": "fruit",
   "price": 3
 }
+###
+
+PUT {{Lab2_HostAddress}}/advertisment/1
+Content-Type: application/json
+
+{
+  "description": "kiwi",
+  "category": "fruit",
+  "price": 2
+}
+
+###
+
+DELETE {{Lab2_HostAddress}}/advertisment/2
+
+
+###
+
+GET {{Lab2_HostAddress}}/categories
+
+###
+
+GET {{Lab2_HostAddress}}/sellers
 
 ###

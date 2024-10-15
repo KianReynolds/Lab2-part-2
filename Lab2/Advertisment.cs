@@ -1,22 +1,27 @@
-﻿namespace Lab2
+﻿namespace AdvertismentApi.Models
 {
     public class Advertisment
     {
-        public int SellerID { get; set; }
-        public string? Description { get; set; }
-        public string? Category { get; set; }
-        public int Price { get; set; }
+        public int Id { get; set; }
+        public string Description { get; set; }
+        public string Category { get; set; }
+        public decimal Price { get; set; }
+        public DateTime DatePosted { get; set; }
+        public int SellerId {  get; set; }
+        public int CategoryId {  get; set; }
+
     }
 
-    public class Sellers
+    public class Seller
     {
-        public int SellerID { get; set; }
-        public string? SellerName { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
     }
 
-    public class Categories
+    public class Category
     {
-        public int CategoriesID { get; set; }
-        public string? Description { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }
