@@ -12,11 +12,14 @@ var app = builder.Build();
 
 app.MapGet("/advertisment", async (AdvertismentDb db) =>
 {
-    return await db.Advertisments.ToListAsync();
+return await db.Advertisments
+    .Include(a => a.Seller)
+        .Include(a => a.Category)
+        .ToListAsync();
 });
 
-app.MapGet("/advertisment/{id}", async (int supplierID, AdvertismentDb db) =>
-    await db.Advertisments.FindAsync(supplierID)
+app.MapGet("/advertisment/{id}", async (int id, AdvertismentDb db) =>
+    await db.Advertisments.FindAsync(id)
         is Advertisment advertisments
             ? Results.Ok(advertisments)
             : Results.NotFound());

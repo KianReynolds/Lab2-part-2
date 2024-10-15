@@ -4,9 +4,11 @@ POST {{Lab2_HostAddress}}/advertisments
 Content-Type: application/json
 
 {
-  "description": "bananas",
-  "category": "fruit",
-  "price": 3
+  "description": "Brand new Iphone 11",
+  "price": 399.99,
+  "datePosted": "2024-10-14T00:00:00Z",
+  "sellerId": 1,
+  "categoryId": 1
 }
 ###
 
@@ -31,5 +33,9 @@ GET {{Lab2_HostAddress}}/categories
 ###
 
 GET {{Lab2_HostAddress}}/sellers
+
+###
+
+GET {{Lab2_HostAddress}}/advertisment
 
 ###
